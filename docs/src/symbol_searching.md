@@ -22,7 +22,7 @@ We add the missing ones.
 
 
 ## Functions
-These are basically all varients of existing functions.
+These are basically all variants of existing functions.
 
  [`contains(haystack, needle)`](@ref contains) is an argument order reversed version of `occursin(needle, haystack)`. It matches `startswith` and `endswith`.
 
