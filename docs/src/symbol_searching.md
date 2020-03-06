@@ -39,19 +39,20 @@ check_any(needles, haystack) == any(check(haystack, needle) for needle in needle
 
 ## Examples
 
-Consider if I had a list of column names, to do with house prices and weather in various cities.
+Consider if I had a list of column names, to do with prices and weather in various cities.
 Where want city it is about is part of the column name, as what kind of data it is.
 
 I might want just the columns names that are for a particular city:
 ```jldoctest symbol_searching
 julia> using Wrangling
 
-julia> const column_names = [:NY_temperature, :NY_house_price, :NY_rainfall, :LON_temperature, :LON_house_price, :LON_rainfall];
+julia> const column_names = const column_names = [:NY_temperature, :NY_house_price, :NY_car_price, :NY_rainfall, :LON_temperature, :LON_house_price, :LON_car_price, :LON_rainfall];
 
 julia> const LON_cols = filter(startswith(:LON), column_names)
-3-element Array{Symbol,1}:
+4-element Array{Symbol,1}:
  :LON_temperature
  :LON_house_price
+ :LON_car_price
  :LON_rainfall
 ```
 
@@ -68,7 +69,31 @@ julia> const weather_cols = filter(contains_any((:temperature, :rainfall)), colu
 Or we might want to do the opposite and exclude any to do with weather:
 ```jldoctest symbol_searching
 julia> const nonweather_cols = filter(!contains_any((:temperature, :rainfall)), column_names)
-2-element Array{Symbol,1}:
+4-element Array{Symbol,1}:
  :NY_house_price
+ :NY_car_price
  :LON_house_price
+ :LON_car_price
+```
+
+Or I might want to get only price data for only one city.
+```jldoctest symbol_searching
+julia> const LON_prices = filter(contains(r"^LON_.*_price$"), column_names)
+2-element Array{Symbol,1}:
+ :LON_house_price
+ :LON_car_price
+```
+
+
+What if we want all columns that are for a particular city, or that are for rainfall:
+```jldoctest symbol_searching
+julia> const LON_or_rainfall_cols = filter(column_names) do col
+   startswith(col, :LON) || endswith(col, :rainfall)
+end
+5-element Array{Symbol,1}:
+ :NY_rainfall
+ :LON_temperature
+ :LON_house_price
+ :LON_car_price
+ :LON_rainfall
 ```
