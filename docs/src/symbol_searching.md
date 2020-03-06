@@ -31,7 +31,7 @@ These are basically all varients of existing functions.
 The curried varients are `check(needle) == haystack->check(haystack, needle)`.
 We have them for `contains`, `startswith`, `endswith`, and all their varients.
 
-They any varients are `startswith_any`, `endswith_any`,  and `contains_any`.
+The any varients are `startswith_any`, `endswith_any`,  and `contains_any`.
 They are of the form:
 ```julia
 check_any(needles, haystack) == any(check(haystack, needle) for needle in needles)
