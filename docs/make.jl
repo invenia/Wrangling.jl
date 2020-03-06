@@ -11,10 +11,6 @@ makedocs(;
     repo="https://github.com/invenia/Wrangling.jl/blob/{commit}{path}#L{line}",
     sitename="Wrangling.jl",
     authors="Invenia Technical Computing Corporation",
-    #== assets=[
-        "assets/invenia.css",
-        "assets/logo.png",
-    ],==#
     strict=true,
 )
 
