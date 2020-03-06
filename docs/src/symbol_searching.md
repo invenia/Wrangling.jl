@@ -16,7 +16,7 @@ We add the missing ones.
 
 !!! warning "Type Piracy"
     We type-pirate `startwith` and `endswith` to provide the single argument, and `Symbol` accepting versions.
-    This is misdemeanor type-piracy: it only turns code which currently errors into nonerrors.
+    This is misdemeanor type-piracy: it only turns code which currently errors into non-errors.
     It is also the only reasonable definition for these methods.
     We don't type-pirate `occursin` as we replace that with [`contains`](@ref) which follows the consistent argument order.
 
