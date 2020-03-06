@@ -5,6 +5,8 @@ makedocs(;
     format=Documenter.HTML(),
     pages=[
         "Home" => "index.md",
+        "Working with Symbol" => "symbol_searching.md",
+        "API" => "api.md",
     ],
     repo="https://github.com/invenia/Wrangling.jl/blob/{commit}{path}#L{line}",
     sitename="Wrangling.jl",
@@ -13,6 +15,7 @@ makedocs(;
         "assets/invenia.css",
         "assets/logo.png",
     ],
+    #strict=true,
 )
 
 deploydocs(;
