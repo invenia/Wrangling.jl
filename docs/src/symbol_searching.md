@@ -24,7 +24,7 @@ We add the missing ones.
 ## Functions
 These are basically all varients of existing functions.
 
- [`contains(haystack, needle)`](@ref contains) is an argument order reversed version of `occursin(needle, haystack)`. It matchs `startswith` and `endswith`.
+ [`contains(haystack, needle)`](@ref contains) is an argument order reversed version of `occursin(needle, haystack)`. It matches `startswith` and `endswith`.
 
 `contains`, `startswith`, `endswith`, and all their varients mentioned here, accept `Symbol`s everywhere they might accept `String`s.
 
