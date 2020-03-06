@@ -5,7 +5,7 @@ Often one thus wants to do various filters on `Symbol`s.
 
 Most filtering functions only accept strings, so code contains a lot of code like:
 ```julia
-filter(col_name->startswith(colname, "temperature"), Symbol.(names(df)))
+filter(col_name->startswith(colname, "temperature"), String.(names(df)))
 ```
 
 We solve that by making functions that accept `Symbol` for all the arguments that would otherwise be strings.
