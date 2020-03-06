@@ -46,7 +46,7 @@ I might want just the columns names that are for a particular city:
 ```jldoctest symbol_searching
 julia> using Wrangling
 
-julia> const column_names = const column_names = [:NY_temperature, :NY_house_price, :NY_car_price, :NY_rainfall, :LON_temperature, :LON_house_price, :LON_car_price, :LON_rainfall];
+julia> const column_names =  [:NY_temperature, :NY_house_price, :NY_car_price, :NY_rainfall, :LON_temperature, :LON_house_price, :LON_car_price, :LON_rainfall];
 
 julia> const LON_cols = filter(startswith(:LON), column_names)
 4-element Array{Symbol,1}:
