@@ -6,7 +6,6 @@ function test_checker(
     right_needle,
     wrong_needle,
 )
-
     @testset "$check" begin
         for (haystack_f, needle_f) in haystack_needle_transforms
             test_checker1(
@@ -27,6 +26,8 @@ const haystack_needle_transforms = Iterators.product(
 transform(f, x) = f(x)
 transform(f, x::Tuple) = map(f, x)  # for testing _any varients
 
+# Tests that the `check` function works correctly for these arguments
+# this is a single case whereas `test_check` generates a bunch of cases for different argument types
 function test_checker1(
     check::Function, haystack::H, right_needle::N, wrong_needle::N
 ) where {H,N}

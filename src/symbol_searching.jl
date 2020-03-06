@@ -31,14 +31,13 @@ end
 for (needle_var, fs) in (
     :needle => (:(Base.startswith), :(Base.endswith), :contains),
     :needles => (:startswith_any, :endswith_any, :contains_any),
-    )
+)
     for f in fs
         quote_nv = QuoteNode(needle_var)
         @eval begin
             """
-                $($f)($($quote_nv)) :: Function
+                $($f)($($quote_nv)) -> Function
             Curried form of `$($f)(haystack, $($quote_nv))`
-            Creates a function that that checks wether its argument is $($f) $($quote_nv).
             """
             $f($needle_var) = Base.Fix2($f, $needle_var)
         end
