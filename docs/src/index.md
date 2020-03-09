@@ -5,5 +5,4 @@ It works well along side packages like [Tables.jl](https://github.com/JuliaData/
 
 
 ```@contents
-Pages = ["symbol_searching.md", "api.md"]
-``
+```
