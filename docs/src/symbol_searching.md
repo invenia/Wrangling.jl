@@ -87,7 +87,9 @@ julia> const LON_prices = filter(contains(r"^LON_.*_price$"), column_names)
 
 What if we want all columns that are either for a particular city, or that are for rainfall anywhere:
 ```jldoctest symbol_searching
-julia> const LON_or_rainfall_cols = filter(col -> startswith(col, :LON) || endswith(col, :rainfall), column_names)
+julia> const LON_or_rainfall_cols = filter(column_names) do col
+           startswith(col, :LON) || endswith(col, :rainfall)
+       end
 5-element Array{Symbol,1}:
  :NY_rainfall
  :LON_temperature
