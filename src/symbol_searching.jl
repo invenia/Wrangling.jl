@@ -36,18 +36,29 @@ for (mod, f) in ((Base, :startswith), (Base, :endswith), (Wrangling, :contains))
 end
 
 # add curried varients
-for (needle_var, fs) in (
-    :needle => (:(Base.startswith), :(Base.endswith), :contains),
-    :needles => (:startswith_any, :endswith_any, :contains_any),
-)
-    for f in fs
-        quote_nv = QuoteNode(needle_var)
+for f in (:startswith_any, :endswith_any, :contains_any)
+    @eval begin
+        """
+            $($f)(needles) -> Function
+        Curried form of `$($f)(haystack, needles)`
+        """
+        $f(needles) = Base.Fix2($f, needles)
+    end
+end
+
+# curried version of `startswith` and `endswith` add to Julia Base in 1.5.0-DEV.438
+# https://github.com/JuliaLang/julia/commit/0a43c0f1d21ce9c647c49111d93927369cd20f85
+# `contains` was added to Julia Base in 1.5.0-DEV.639
+# https://github.com/JuliaLang/julia/commit/cc6e121386758dff6ba7911770e48dfd59520199
+@static if VERSION <= v"1.5.0-DEV.639"
+    for f in (:(Base.startswith), :(Base.endswith), :contains)
         @eval begin
             """
-                $($f)($($quote_nv)) -> Function
-            Curried form of `$($f)(haystack, $($quote_nv))`
+                $($f)(needle) -> Function
+
+            Curried form of `$($f)(haystack, needle)`
             """
-            $f($needle_var) = Base.Fix2($f, $needle_var)
+            $f(needle) = Base.Fix2($f, needle)
         end
     end
 end
