@@ -1,7 +1,7 @@
 name = "Wrangling"
 uuid = "9e19721c-8a1a-4e7b-ae00-562464868f98"
 authors = ["Invenia Technical Computing Corporation"]
-version = "0.1.0"
+version = "0.1.1"
 
 [compat]
 julia = "1"

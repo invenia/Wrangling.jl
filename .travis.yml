@@ -4,15 +4,13 @@ os:
   - linux
   - osx
 julia:
-  # we don't test on 1.0 as our tests use some
-  # 1.2 features (though the package itself doesn't)
-  - 1.2
-  - 1.3
-  - 1.4
+  # we don't test on 1.0 as our tests use some 1.2 features
+  # (though the package itself doesn't)
+  - 1  # latest stable v1 release
   - nightly
 jobs::
   allow_failures:
-    - julia: 1.4, nightly
+    - julia: nightly
   fast_finish: true
   include:
     - stage: Documentation
