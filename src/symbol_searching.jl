@@ -28,6 +28,7 @@ for f in (:startswith_any, :endswith_any, :contains_any)
     @eval begin
         """
             $($f)(needles) -> Function
+
         Curried form of `$($f)(haystack, needles)`
         """
         $f(needles) = Base.Fix2($f, needles)
