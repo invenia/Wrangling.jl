@@ -1,3 +1,4 @@
+using Compat: contains
 using Wrangling
 using Test
 

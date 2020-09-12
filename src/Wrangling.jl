@@ -1,5 +1,7 @@
 module Wrangling
 
+using Compat: Compat, contains
+
 export contains
 export startswith_any, endswith_any, contains_any
 

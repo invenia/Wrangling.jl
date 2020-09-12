@@ -15,21 +15,16 @@ We add the missing ones.
 
 
 !!! warning "Type Piracy"
-    We type-pirate `startwith` and `endswith` to provide the single argument, and `Symbol` accepting versions.
+    We type-pirate `startwith` and `endswith` to provide `Symbol` accepting versions.
     This is misdemeanor type-piracy: it only turns code which currently errors into non-errors.
     It is also the only reasonable definition for these methods.
-    We don't type-pirate `occursin` as we replace that with [`contains`](@ref) which follows the consistent argument order.
 
 
 ## Functions
-These are basically all variants of existing functions.
 
- [`contains(haystack, needle)`](@ref contains) is an argument order reversed version of `occursin(needle, haystack)`. It matches `startswith` and `endswith`.
+These are all variants of existing functions.
 
 `contains`, `startswith`, `endswith`, and all their varients mentioned here, accept `Symbol`s everywhere they might accept `String`s.
-
-The curried varients are `check(needle) == haystack->check(haystack, needle)`.
-We have them for `contains`, `startswith`, `endswith`, and all their varients.
 
 The `any` varients are [`startswith_any`](@ref), [`endswith_any`](@ref),  and [`contains_any`](@ref).
 They are of the form:
